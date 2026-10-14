@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Usman Bro! 🎉</title>
+  <title>Happy Birthday Usman Bro! ❤️</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -11,7 +11,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      background: linear-gradient(135deg, #1a0b2e 0%, #311042 50%, #4a154b 100%);
       color: #f8fafc;
       min-height: 100vh;
       overflow-x: hidden;
@@ -20,11 +20,11 @@
     .font-hand { font-family: 'Caveat', cursive; }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 182, 193, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .balloon {
@@ -67,22 +67,20 @@
       background: white;
       color: #1e293b;
       padding: 12px 12px 24px 12px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
       transform: rotate(-2deg);
       transition: all 0.3s ease;
     }
     .polaroid:hover {
-      transform: rotate(0deg) scale(1.03);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transform: rotate(0deg) scale(1.02);
     }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
 
-  <!-- Background Music with Exact Filename Matching -->
+  <!-- Background Music -->
   <audio id="bg-music" loop preload="auto">
     <source src="audio/MERA BHAI TU MERI JAAN HAI Raksha Bandhan Song, Rakhi Song Sohail Shaikh,Naved Shaikh,Ali-Faishal.mp3.mpeg" type="audio/mpeg">
-    <source src="audio/MERA%20BHAI%20TU%20MERI%20JAAN%20HAI%20Raksha%20Bandhan%20Song,%20Rakhi%20Song%20Sohail%20Shaikh,Naved%20Shaikh,Ali-Faishal.mp3.mpeg" type="audio/mpeg">
   </audio>
 
   <!-- Sound Toggle Button -->
@@ -92,24 +90,24 @@
   </button>
 
   <!-- SCREEN 1: PASSWORD LOCK SCREEN -->
-  <div id="lock-screen" class="w-full max-w-md glass-card rounded-3xl p-8 text-center relative z-20 transition-all duration-500 my-auto">
-    <div class="w-20 h-20 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/30">
-      <i class="fas fa-lock text-3xl text-pink-400"></i>
+  <div id="lock-screen" class="w-full max-w-md glass-card rounded-3xl p-8 text-center relative z-25 transition-all duration-500 my-auto">
+    <div class="w-20 h-20 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/30 shadow-lg">
+      <i class="fas fa-heart text-3xl text-pink-400 animate-pulse"></i>
     </div>
     
-    <h1 class="text-3xl font-extrabold font-fun text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 mb-2">
-      Happy Birthday Usman Bro! 🎉
+    <h1 class="text-3xl font-extrabold font-fun text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-rose-300 mb-2">
+      For My Dearest Brother Usman ❤️
     </h1>
-    <p class="text-slate-300 text-sm mb-6">Enter the secret 4-digit password (DOB: DDMM) to unlock your birthday surprise!</p>
+    <p class="text-slate-300 text-sm mb-6">Enter your special date of birth (DOB: DDMM e.g. 1510) to open your surprise!</p>
 
     <div class="space-y-4">
       <div id="input-container" class="relative">
-        <input type="password" id="pass-input" maxlength="4" placeholder="Enter DOB (e.g. 1510)" class="w-full bg-slate-900/60 border border-slate-700 focus:border-pink-500 text-center text-2xl tracking-widest text-white py-3 px-4 rounded-xl outline-none transition font-mono">
+        <input type="password" id="pass-input" maxlength="4" placeholder="Enter DOB (1510)" class="w-full bg-slate-900/60 border border-slate-700 focus:border-pink-500 text-center text-2xl tracking-widest text-white py-3 px-4 rounded-xl outline-none transition font-mono">
       </div>
-      <p id="error-msg" class="text-red-400 text-xs hidden font-medium">Wrong passcode! Try your birth date (1510) 🗝️</p>
+      <p id="error-msg" class="text-rose-400 text-xs hidden font-medium">Arrey passcode galat hai! Try 1510 🗝️</p>
       
-      <button onclick="checkPassword()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3.5 rounded-xl shadow-lg transform active:scale-95 transition flex items-center justify-center gap-2">
-        <span>Unlock Surprise</span>
+      <button onclick="checkPassword()" class="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-3.5 rounded-xl shadow-lg transform active:scale-95 transition flex items-center justify-center gap-2">
+        <span>Open Heartfelt Surprise</span>
         <i class="fas fa-key"></i>
       </button>
     </div>
@@ -121,19 +119,19 @@
     
     <!-- Title Section -->
     <div class="mb-6">
-      <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest">
-        Special Day Celebration 🎉
+      <span class="bg-pink-500/20 text-pink-200 border border-pink-500/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest">
+        To My Partner in Crime & Best Brother 🌸
       </span>
       <h2 class="text-4xl sm:text-5xl font-extrabold font-fun text-white mt-3 text-shadow">
-        Happy Birthday Usman Bro! 🎈
+        Happy Birthday Usman! 🎈
       </h2>
-      <p class="text-slate-300 text-sm sm:text-base mt-2">Pop all 3 balloons below to reveal your wishes & memories!</p>
+      <p class="text-slate-300 text-sm sm:text-base mt-2">Tap all 3 balloons below to unpack my heartfelt wishes & memories!</p>
     </div>
 
     <!-- Cartoon Character Avatar -->
     <div class="relative w-36 h-36 mx-auto mb-6">
       <div class="absolute inset-0 bg-pink-500/30 rounded-full blur-xl animate-pulse"></div>
-      <img src="https://api.dicebear.com/7.x/bottts/svg?seed=UsmanBro&backgroundColor=b6e3f4,c0aede,d1d4f9" alt="Usman Avatar" class="w-full h-full relative z-10 drop-shadow-2xl hover:rotate-6 transition duration-300">
+      <img src="https://api.dicebear.com/7.x/bottts/svg?seed=UsmanBro&backgroundColor=ffdfbf,ffd5dc,c0aede" alt="Usman Avatar" class="w-full h-full relative z-10 drop-shadow-2xl hover:rotate-6 transition duration-300">
     </div>
 
     <!-- Direction Arrow -->
@@ -147,40 +145,40 @@
       
       <!-- Balloon 1 -->
       <div id="balloon-1" onclick="popBalloon(1)" class="balloon balloon-float-1 flex flex-col items-center">
-        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-pink-600 via-rose-500 to-pink-400 rounded-full flex items-center justify-center relative shadow-lg">
-          <i class="fas fa-heart text-2xl text-white/80"></i>
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-rose-600 via-pink-500 to-rose-400 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-heart text-2xl text-white/90"></i>
           <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">1</span>
         </div>
         <div class="w-0.5 h-12 bg-white/30"></div>
-        <p class="text-xs font-medium text-pink-300 mt-1">Special Wish 💌</p>
+        <p class="text-xs font-medium text-pink-300 mt-1">Sister's Note 💌</p>
       </div>
 
       <!-- Balloon 2 -->
       <div id="balloon-2" onclick="popBalloon(2)" class="balloon balloon-float-2 flex flex-col items-center">
-        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 rounded-full flex items-center justify-center relative shadow-lg">
-          <i class="fas fa-camera text-2xl text-white/80"></i>
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-purple-600 via-indigo-500 to-pink-400 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-film text-2xl text-white/90"></i>
           <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">2</span>
         </div>
         <div class="w-0.5 h-12 bg-white/30"></div>
-        <p class="text-xs font-medium text-purple-300 mt-1">Photo Gallery 📸</p>
+        <p class="text-xs font-medium text-purple-300 mt-1">Video & Photos 🎬</p>
       </div>
 
       <!-- Balloon 3 -->
       <div id="balloon-3" onclick="popBalloon(3)" class="balloon balloon-float-3 flex flex-col items-center">
-        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-amber-500 via-orange-500 to-yellow-300 rounded-full flex items-center justify-center relative shadow-lg">
-          <i class="fas fa-crown text-2xl text-white/80"></i>
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-amber-500 via-rose-500 to-yellow-400 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-crown text-2xl text-white/90"></i>
           <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">3</span>
         </div>
         <div class="w-0.5 h-12 bg-white/30"></div>
-        <p class="text-xs font-medium text-amber-300 mt-1">Bro Perks 👑</p>
+        <p class="text-xs font-medium text-amber-300 mt-1">Special Perks 👑</p>
       </div>
 
     </div>
 
     <!-- Progress & Next Stage Button -->
     <div id="next-button-container" class="mt-8 hidden animate-fade-in">
-      <button onclick="goToFinalScreen()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-2xl transform hover:scale-105 active:scale-95 transition flex items-center gap-3 mx-auto border border-emerald-400/30">
-        <span>Click For Main Final Message</span>
+      <button onclick="goToFinalScreen()" class="bg-gradient-to-r from-rose-500 to-purple-600 hover:opacity-90 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-2xl transform hover:scale-105 active:scale-95 transition flex items-center gap-3 mx-auto border border-pink-400/30">
+        <span>Click For Heartfelt Final Message ❤️</span>
         <i class="fas fa-arrow-right animate-pulse"></i>
       </button>
     </div>
@@ -193,24 +191,26 @@
     <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-500/20 rounded-full blur-2xl"></div>
     <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl"></div>
 
-    <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
-      The World's Best Brother Award 🏆
+    <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+      Forever My Protector & Best Friend 💫
     </span>
 
     <h2 class="text-3xl sm:text-4xl font-extrabold font-fun text-white mb-4">
-      Happiest Birthday Usman Bro! 🎉
+      Happiest Birthday Usman! 🎉
     </h2>
 
-    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 text-left space-y-4 mb-6 shadow-inner">
-      <p class="text-slate-200 leading-relaxed font-hand text-2xl">
-        Happiest Birthday to the most caring, sweet, cute, gandy, and <span class="text-pink-400 font-bold underline">WORLD'S BEST BROTHER!</span> ❤️✨
+    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-left space-y-4 mb-6 shadow-inner">
+      <p class="text-slate-200 leading-relaxed font-hand text-2xl text-pink-200 text-center">
+        "Bhai choty bhi ho toh bare hi lagtay hain... ❤️"
       </p>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        May your year ahead be filled with unlimited happiness, huge success, good health, and all the good vibes you deserve. Thank you for always being there, sharing laughs, and being the coolest brother ever! 🚀🎂
+      <p class="text-slate-300 text-sm leading-relaxed text-center">
+        Mujhe aaj bhi achi tarah yaad hai jab maine zidd ki thi ke mujhe bhai chahiye, aur Ammi ne ek chota sa baby la kar meri godh mein diya tha aur kaha tha: <i>"Yeh lo bhai tumhara!"</i> 🥺<br><br>
+        Pata hi nahi laga ke kab woh chota sa baba aaj mashaAllah itna bara ho gaya hai ke ab mujhse bhi bara lagta hai! Time kitni jaldi guzar jata hai na, ke chote monkeys itne bare ho jate hain.<br><br>
+        Happiest birthday pyare bhai! Allah tumhein hamesha khush rakhe, abad rakhe aur kamyab kare. Ameen sum Ameen! 🤲💕
       </p>
     </div>
 
-    <button onclick="triggerConfettiShower()" class="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:opacity-90 text-white font-extrabold py-4 rounded-xl shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
+    <button onclick="triggerConfettiShower()" class="w-full bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:opacity-90 text-white font-extrabold py-4 rounded-xl shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
       <i class="fas fa-gift"></i>
       <span>Celebrate Again with Confetti! 🎉</span>
     </button>
@@ -219,56 +219,62 @@
 
   <!-- MODALS FOR POPPED BALLOONS -->
 
-  <!-- Modal 1: Birthday Wish -->
+  <!-- Modal 1: Emotional Memory Note -->
   <div id="modal-1" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-pink-500/30 relative">
       <div class="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-400 text-3xl">
         💌
       </div>
-      <h3 class="text-2xl font-bold font-fun text-white mb-2">Cool Birthday Wish!</h3>
-      <p class="text-slate-200 text-sm leading-relaxed mb-6">
-        "To the coolest brother Usman! May your life be as bright as your smile and filled with all the success in the world. Keep shining and stay awesome!" 🌟
+      <h3 class="text-2xl font-bold font-fun text-white mb-2">A Special Memory From Sister</h3>
+      <p class="text-slate-200 text-sm leading-relaxed mb-6 font-hand text-xl">
+        "Jab Ammi ne woh chota sa baby la kar meri godh mein diya tha... aur aaj mashaAllah aap mujhse bhi bare lagte ho! Bhai choty bhi ho toh bare hi lagtay hain. Stay blessed always!" 🌟
       </p>
-      <button onclick="closeModal(1)" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl transition">Got it! 👍</button>
+      <button onclick="closeModal(1)" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2.5 rounded-xl transition">Awww, So Emotional! ❤️</button>
     </div>
   </div>
 
-  <!-- Modal 2: Polaroid Photo Gallery -->
+  <!-- Modal 2: Memory & Video Clip Gallery -->
   <div id="modal-2" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-purple-500/30 relative">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-xl font-bold font-fun text-white"><i class="fas fa-camera text-purple-400 mr-2"></i> Usman Bro's Memory Gallery</h3>
+        <h3 class="text-xl font-bold font-fun text-white"><i class="fas fa-film text-purple-400 mr-2"></i> Memories & Video Clip</h3>
         <button onclick="closeModal(2)" class="text-slate-400 hover:text-white text-lg"><i class="fas fa-times"></i></button>
       </div>
       
-      <!-- Polaroid Display Frame -->
+      <!-- Media Display Frame -->
       <div class="polaroid mx-auto my-2 max-w-xs">
-        <div class="w-full h-56 bg-slate-200 rounded overflow-hidden relative">
-          <img id="gallery-img" src="images/1ee9bc61-dfdc-48ad-a798-24f0b5df39e7.jpg" alt="Bro Photo" class="w-full h-full object-cover">
+        <div id="media-container" class="w-full h-56 bg-slate-200 rounded overflow-hidden relative flex items-center justify-center">
+          <!-- Default Image View -->
+          <img id="gallery-img" src="images/pic1.jpg" alt="Bro Photo" class="w-full h-full object-cover">
+          <!-- Video Clip View -->
+          <video id="gallery-video" controls class="w-full h-full object-cover hidden">
+            <source src="videos/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-        <p id="gallery-caption" class="font-hand text-2xl text-slate-800 mt-3 font-bold">Best Memories with Bro! 📸</p>
+        <p id="gallery-caption" class="font-hand text-xl text-slate-800 mt-2 font-bold">Pyaari Memories with Bro! ❤️</p>
       </div>
 
-      <div class="flex justify-between items-center mt-6">
-        <button onclick="prevPhoto()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-sm font-semibold transition"><i class="fas fa-arrow-left mr-1"></i> Prev</button>
-        <span id="photo-counter" class="text-xs text-slate-400">1 / 3</span>
-        <button onclick="nextPhoto()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-sm font-semibold transition">Next <i class="fas fa-arrow-right ml-1"></i></button>
+      <div class="flex justify-between items-center mt-4">
+        <button onclick="prevPhoto()" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold transition"><i class="fas fa-arrow-left mr-1"></i> Prev</button>
+        <button onclick="toggleVideoView()" id="video-toggle-btn" class="bg-pink-600 hover:bg-pink-700 text-white px-3 py-1.5 rounded-xl text-xs font-semibold transition"><i class="fas fa-video mr-1"></i> Play Video Clip</button>
+        <button onclick="nextPhoto()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-xs font-semibold transition">Next <i class="fas fa-arrow-right ml-1"></i></button>
       </div>
     </div>
   </div>
 
-  <!-- Modal 3: Perks & Skills -->
+  <!-- Modal 3: Brother Perks & Stats -->
   <div id="modal-3" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-amber-500/30 relative">
       <div class="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-400 text-3xl">
         👑
       </div>
-      <h3 class="text-2xl font-bold font-fun text-white mb-4">Usman Bro Stats</h3>
+      <h3 class="text-2xl font-bold font-fun text-white mb-4">Usman Bro Superpowers</h3>
       
       <div class="space-y-4 text-left mb-6">
         <div>
           <div class="flex justify-between text-xs font-semibold mb-1">
-            <span class="text-slate-300">Caring Level</span>
+            <span class="text-slate-300">Caring & Protective</span>
             <span class="text-amber-400">1000%</span>
           </div>
           <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
@@ -277,7 +283,7 @@
         </div>
         <div>
           <div class="flex justify-between text-xs font-semibold mb-1">
-            <span class="text-slate-300">Coolness Factor</span>
+            <span class="text-slate-300">Annoying Monkey Level</span>
             <span class="text-pink-400">100%</span>
           </div>
           <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
@@ -286,8 +292,8 @@
         </div>
         <div>
           <div class="flex justify-between text-xs font-semibold mb-1">
-            <span class="text-slate-300">Best Brother Title</span>
-            <span class="text-emerald-400">ALWAYS</span>
+            <span class="text-slate-300">Best Brother Trophy</span>
+            <span class="text-emerald-400">PERMANENT</span>
           </div>
           <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
             <div class="bg-emerald-500 h-full w-[100%]"></div>
@@ -295,7 +301,7 @@
         </div>
       </div>
 
-      <button onclick="closeModal(3)" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 rounded-xl transition">Awesome! 🔥</button>
+      <button onclick="closeModal(3)" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 rounded-xl transition">So True! 🔥</button>
     </div>
   </div>
 
@@ -305,12 +311,15 @@
     let poppedBalloons = new Set();
     let isAudioPlaying = false;
     let currentPhotoIndex = 0;
+    let isVideoShowing = false;
 
-    // Exact uploaded photos binding
+    // All 5 uploaded photos linked
     const photos = [
-      { src: 'images/1ee9bc61-dfdc-48ad-a798-24f0b5df39e7.jpg', caption: 'Best Memories with Bro! 📸' },
-      { src: 'images/3252430c-14b4-42dc-aaf5-71969cc5db63.jpg', caption: 'Always Cool & Awesome 😎' },
-      { src: 'images/7016e4d1-1764-41cf-90a8-9f73b53c3800.jpg', caption: 'World\'s Best Brother ❤️' }
+      { src: 'images/pic1.jpg', caption: 'Pyaari Memories with Bro! ❤️' },
+      { src: 'images/pic2.jpg', caption: 'Always My Protector 😎' },
+      { src: 'images/pic3.jpg', caption: 'Best Moments Ever ✨' },
+      { src: 'images/pic4.jpg', caption: 'Partners in Everything 🚀' },
+      { src: 'images/pic5.jpg', caption: 'World\'s Best Brother! 🏆' }
     ];
 
     // Password Check
@@ -357,23 +366,52 @@
 
     function closeModal(num) {
       document.getElementById(`modal-${num}`).classList.add('hidden');
+      if(num === 2) {
+        document.getElementById('gallery-video').pause();
+      }
+    }
+
+    // Toggle between Photos and Video Clip
+    function toggleVideoView() {
+      const imgElem = document.getElementById('gallery-img');
+      const videoElem = document.getElementById('gallery-video');
+      const toggleBtn = document.getElementById('video-toggle-btn');
+      const captionElem = document.getElementById('gallery-caption');
+
+      if (!isVideoShowing) {
+        imgElem.classList.add('hidden');
+        videoElem.classList.remove('hidden');
+        videoElem.play();
+        isVideoShowing = true;
+        toggleBtn.innerHTML = '<i class="fas fa-images mr-1"></i> Show Photos';
+        captionElem.innerText = 'Special Video Clip! 🎬';
+      } else {
+        videoElem.pause();
+        videoElem.classList.add('hidden');
+        imgElem.classList.remove('hidden');
+        isVideoShowing = false;
+        toggleBtn.innerHTML = '<i class="fas fa-video mr-1"></i> Play Video Clip';
+        updatePhoto();
+      }
     }
 
     // Photo Gallery Controls
     function updatePhoto() {
+      if (isVideoShowing) return;
       const photo = photos[currentPhotoIndex];
       const imgElem = document.getElementById('gallery-img');
       imgElem.src = photo.src;
       document.getElementById('gallery-caption').innerText = photo.caption;
-      document.getElementById('photo-counter').innerText = `${currentPhotoIndex + 1} / ${photos.length}`;
     }
 
     function nextPhoto() {
+      if (isVideoShowing) return;
       currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
       updatePhoto();
     }
 
     function prevPhoto() {
+      if (isVideoShowing) return;
       currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
       updatePhoto();
     }
@@ -392,7 +430,7 @@
         isAudioPlaying = true;
         document.getElementById('audio-icon').className = 'fas fa-volume-up text-emerald-400';
         document.getElementById('audio-text').innerText = 'Music Playing';
-      }).catch(err => console.log('Audio autoplay blocked by browser policy'));
+      }).catch(err => console.log('Audio autoplay blocked'));
     }
 
     function toggleAudio() {
