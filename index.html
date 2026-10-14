@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Usman Bro! 🎉</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Fredoka+One&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .font-fun { font-family: 'Fredoka One', cursive; }
+    .font-hand { font-family: 'Caveat', cursive; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .balloon {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    }
+    .balloon:hover {
+      transform: translateY(-12px) scale(1.08);
+    }
+    .balloon-float-1 { animation: float 3.5s ease-in-out infinite; }
+    .balloon-float-2 { animation: float 4.2s ease-in-out infinite 0.5s; }
+    .balloon-float-3 { animation: float 3.8s ease-in-out infinite 1s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-18px) rotate(2deg); }
+    }
+
+    .bounce-arrow {
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 200%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-12px); }
+      60% { transform: translateY(-6px); }
+    }
+
+    .shake {
+      animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    }
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+      40%, 60% { transform: translate3d(4px, 0, 0); }
+    }
+
+    .polaroid {
+      background: white;
+      color: #1e293b;
+      padding: 12px 12px 24px 12px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      transition: all 0.3s ease;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4 relative">
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="audio/song.mp3" type="audio/mpeg">
+    <source src="audio/music.mp3" type="audio/mpeg">
+    <source src="audio/audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Sound Toggle Button -->
+  <button id="audio-toggle" onclick="toggleAudio()" class="fixed top-4 right-4 z-50 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full glass-card transition flex items-center gap-2 text-sm backdrop-blur-md">
+    <i id="audio-icon" class="fas fa-volume-mute text-pink-400"></i>
+    <span id="audio-text" class="hidden sm:inline">Play Music</span>
+  </button>
+
+  <!-- SCREEN 1: PASSWORD LOCK SCREEN -->
+  <div id="lock-screen" class="w-full max-w-md glass-card rounded-3xl p-8 text-center relative z-20 transition-all duration-500 my-auto">
+    <div class="w-20 h-20 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/30">
+      <i class="fas fa-lock text-3xl text-pink-400"></i>
+    </div>
+    
+    <h1 class="text-3xl font-extrabold font-fun text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 mb-2">
+      Happy Birthday Usman Bro! 🎉
+    </h1>
+    <p class="text-slate-300 text-sm mb-6">Enter the secret 4-digit password (DOB: DDMM) to unlock your birthday surprise!</p>
+
+    <div class="space-y-4">
+      <div id="input-container" class="relative">
+        <input type="password" id="pass-input" maxlength="4" placeholder="Enter DOB (e.g. 1510)" class="w-full bg-slate-900/60 border border-slate-700 focus:border-pink-500 text-center text-2xl tracking-widest text-white py-3 px-4 rounded-xl outline-none transition font-mono">
+      </div>
+      <p id="error-msg" class="text-red-400 text-xs hidden font-medium">Wrong passcode! Try your birth date (1510) 🗝️</p>
+      
+      <button onclick="checkPassword()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3.5 rounded-xl shadow-lg transform active:scale-95 transition flex items-center justify-center gap-2">
+        <span>Unlock Surprise</span>
+        <i class="fas fa-key"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- SCREEN 2: MAIN BIRTHDAY INTERACTIVE STAGE -->
+  <div id="main-screen" class="hidden w-full max-w-2xl text-center py-6 px-4 z-20 transition-all duration-700">
+    
+    <!-- Title Section -->
+    <div class="mb-6">
+      <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest">
+        Special Day Celebration 🎉
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold font-fun text-white mt-3 text-shadow">
+        Happy Birthday Usman Bro! 🎈
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mt-2">Pop all 3 balloons below to reveal your wishes & memories!</p>
+    </div>
+
+    <!-- Cartoon Character Avatar -->
+    <div class="relative w-36 h-36 mx-auto mb-6">
+      <div class="absolute inset-0 bg-pink-500/30 rounded-full blur-xl animate-pulse"></div>
+      <img src="https://api.dicebear.com/7.x/bottts/svg?seed=UsmanBro&backgroundColor=b6e3f4,c0aede,d1d4f9" alt="Usman Avatar" class="w-full h-full relative z-10 drop-shadow-2xl hover:rotate-6 transition duration-300">
+    </div>
+
+    <!-- Direction Arrow -->
+    <div class="mb-6 flex flex-col items-center">
+      <p class="text-xs text-pink-300 font-semibold uppercase tracking-wider mb-1">Pop the balloons below!</p>
+      <i class="fas fa-chevron-down text-2xl text-pink-400 bounce-arrow"></i>
+    </div>
+
+    <!-- Balloons Section -->
+    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto my-6">
+      
+      <!-- Balloon 1 -->
+      <div id="balloon-1" onclick="popBalloon(1)" class="balloon balloon-float-1 flex flex-col items-center">
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-pink-600 via-rose-500 to-pink-400 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-heart text-2xl text-white/80"></i>
+          <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">1</span>
+        </div>
+        <div class="w-0.5 h-12 bg-white/30"></div>
+        <p class="text-xs font-medium text-pink-300 mt-1">Special Wish 💌</p>
+      </div>
+
+      <!-- Balloon 2 -->
+      <div id="balloon-2" onclick="popBalloon(2)" class="balloon balloon-float-2 flex flex-col items-center">
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-camera text-2xl text-white/80"></i>
+          <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">2</span>
+        </div>
+        <div class="w-0.5 h-12 bg-white/30"></div>
+        <p class="text-xs font-medium text-purple-300 mt-1">Photo Gallery 📸</p>
+      </div>
+
+      <!-- Balloon 3 -->
+      <div id="balloon-3" onclick="popBalloon(3)" class="balloon balloon-float-3 flex flex-col items-center">
+        <div class="w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-tr from-amber-500 via-orange-500 to-yellow-300 rounded-full flex items-center justify-center relative shadow-lg">
+          <i class="fas fa-crown text-2xl text-white/80"></i>
+          <span class="absolute top-2 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-bold">3</span>
+        </div>
+        <div class="w-0.5 h-12 bg-white/30"></div>
+        <p class="text-xs font-medium text-amber-300 mt-1">Bro Perks 👑</p>
+      </div>
+
+    </div>
+
+    <!-- Progress & Next Stage Button -->
+    <div id="next-button-container" class="mt-8 hidden animate-fade-in">
+      <button onclick="goToFinalScreen()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-2xl transform hover:scale-105 active:scale-95 transition flex items-center gap-3 mx-auto border border-emerald-400/30">
+        <span>Click For Main Final Message</span>
+        <i class="fas fa-arrow-right animate-pulse"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- SCREEN 3: FINAL GRAND MESSAGE SCREEN -->
+  <div id="final-screen" class="hidden w-full max-w-xl glass-card rounded-3xl p-8 text-center z-20 my-auto relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-500/20 rounded-full blur-2xl"></div>
+    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl"></div>
+
+    <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+      The World's Best Brother Award 🏆
+    </span>
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold font-fun text-white mb-4">
+      Happiest Birthday Usman Bro! 🎉
+    </h2>
+
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 text-left space-y-4 mb-6 shadow-inner">
+      <p class="text-slate-200 leading-relaxed font-hand text-2xl">
+        Happiest Birthday to the most caring, sweet, cute, gandy, and <span class="text-pink-400 font-bold underline">WORLD'S BEST BROTHER!</span> ❤️✨
+      </p>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        May your year ahead be filled with unlimited happiness, huge success, good health, and all the good vibes you deserve. Thank you for always being there, sharing laughs, and being the coolest brother ever! 🚀🎂
+      </p>
+    </div>
+
+    <button onclick="triggerConfettiShower()" class="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:opacity-90 text-white font-extrabold py-4 rounded-xl shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
+      <i class="fas fa-gift"></i>
+      <span>Celebrate Again with Confetti! 🎉</span>
+    </button>
+  </div>
+
+
+  <!-- MODALS FOR POPPED BALLOONS -->
+
+  <!-- Modal 1: Birthday Wish -->
+  <div id="modal-1" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-pink-500/30 relative animate-scale-up">
+      <div class="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-400 text-3xl">
+        💌
+      </div>
+      <h3 class="text-2xl font-bold font-fun text-white mb-2">Cool Birthday Wish!</h3>
+      <p class="text-slate-200 text-sm leading-relaxed mb-6">
+        "To the coolest brother Usman! May your life be as bright as your smile and filled with all the success in the world. Keep shining and stay awesome!" 🌟
+      </p>
+      <button onclick="closeModal(1)" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl transition">Got it! 👍</button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Polaroid Photo Gallery -->
+  <div id="modal-2" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-purple-500/30 relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-bold font-fun text-white"><i class="fas fa-camera text-purple-400 mr-2"></i> Usam Bro's Memory Gallery</h3>
+        <button onclick="closeModal(2)" class="text-slate-400 hover:text-white text-lg"><i class="fas fa-times"></i></button>
+      </div>
+      
+      <!-- Polaroid Display Frame -->
+      <div class="polaroid mx-auto my-2 max-w-xs">
+        <div class="w-full h-56 bg-slate-200 rounded overflow-hidden relative">
+          <img id="gallery-img" src="images/pic1.jpg" onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600'" alt="Bro Photo" class="w-full h-full object-cover">
+        </div>
+        <p id="gallery-caption" class="font-hand text-2xl text-slate-800 mt-3 font-bold">Best Memories with Bro! 📸</p>
+      </div>
+
+      <div class="flex justify-between items-center mt-6">
+        <button onclick="prevPhoto()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-sm font-semibold transition"><i class="fas fa-arrow-left mr-1"></i> Prev</button>
+        <span id="photo-counter" class="text-xs text-slate-400">1 / 3</span>
+        <button onclick="nextPhoto()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-sm font-semibold transition">Next <i class="fas fa-arrow-right ml-1"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Perks & Skills -->
+  <div id="modal-3" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-amber-500/30 relative">
+      <div class="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-400 text-3xl">
+        👑
+      </div>
+      <h3 class="text-2xl font-bold font-fun text-white mb-4">Usman Bro Stats</h3>
+      
+      <div class="space-y-4 text-left mb-6">
+        <div>
+          <div class="flex justify-between text-xs font-semibold mb-1">
+            <span class="text-slate-300">Caring Level</span>
+            <span class="text-amber-400">1000%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+            <div class="bg-gradient-to-r from-amber-500 to-pink-500 h-full w-full"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs font-semibold mb-1">
+            <span class="text-slate-300">Coolness Factor</span>
+            <span class="text-pink-400">100%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+            <div class="bg-pink-500 h-full w-[100%]"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs font-semibold mb-1">
+            <span class="text-slate-300">Best Brother Title</span>
+            <span class="text-emerald-400">ALWAYS</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full w-[100%]"></div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="closeModal(3)" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 rounded-xl transition">Awesome! 🔥</button>
+    </div>
+  </div>
+
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    let poppedBalloons = new Set();
+    let isAudioPlaying = false;
+    let currentPhotoIndex = 0;
+
+    // Photos uploaded in images folder with fallback support
+    const photos = [
+      { src: 'images/pic1.jpg', caption: 'Best Memories with Bro! 📸' },
+      { src: 'images/pic2.jpg', caption: 'Always Cool & Awesome 😎' },
+      { src: 'images/pic3.jpg', caption: 'World\'s Best Brother ❤️' }
+    ];
+
+    // Password Check
+    function checkPassword() {
+      const input = document.getElementById('pass-input').value;
+      const errorMsg = document.getElementById('error-msg');
+      const inputContainer = document.getElementById('input-container');
+
+      if (input === '1510') {
+        document.getElementById('lock-screen').classList.add('hidden');
+        document.getElementById('main-screen').classList.remove('hidden');
+        triggerConfettiShower();
+        playAudio();
+      } else {
+        errorMsg.classList.remove('hidden');
+        inputContainer.classList.add('shake');
+        setTimeout(() => inputContainer.classList.remove('shake'), 500);
+      }
+    }
+
+    // Balloon Popping Action
+    function popBalloon(num) {
+      const balloon = document.getElementById(`balloon-${num}`);
+      balloon.style.transform = 'scale(0) rotate(180deg)';
+      balloon.style.opacity = '0';
+      balloon.style.pointerEvents = 'none';
+
+      poppedBalloons.add(num);
+      
+      // Confetti burst on pop
+      confetti({
+        particleCount: 40,
+        spread: 60,
+        origin: { y: 0.6 }
+      });
+
+      setTimeout(() => {
+        document.getElementById(`modal-${num}`).classList.remove('hidden');
+      }, 300);
+
+      if (poppedBalloons.size === 3) {
+        document.getElementById('next-button-container').classList.remove('hidden');
+      }
+    }
+
+    function closeModal(num) {
+      document.getElementById(`modal-${num}`).classList.add('hidden');
+    }
+
+    // Photo Gallery Controls
+    function updatePhoto() {
+      const photo = photos[currentPhotoIndex];
+      const imgElem = document.getElementById('gallery-img');
+      imgElem.src = photo.src;
+      document.getElementById('gallery-caption').innerText = photo.caption;
+      document.getElementById('photo-counter').innerText = `${currentPhotoIndex + 1} / ${photos.length}`;
+    }
+
+    function nextPhoto() {
+      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+      updatePhoto();
+    }
+
+    function prevPhoto() {
+      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      updatePhoto();
+    }
+
+    // Go to Final Grand Screen
+    function goToFinalScreen() {
+      document.getElementById('main-screen').classList.add('hidden');
+      document.getElementById('final-screen').classList.remove('hidden');
+      triggerConfettiShower();
+    }
+
+    // Audio Controls
+    function playAudio() {
+      const audio = document.getElementById('bg-music');
+      audio.play().then(() => {
+        isAudioPlaying = true;
+        document.getElementById('audio-icon').className = 'fas fa-volume-up text-emerald-400';
+        document.getElementById('audio-text').innerText = 'Music Playing';
+      }).catch(err => console.log('Audio autoplay blocked'));
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('bg-music');
+      if (isAudioPlaying) {
+        audio.pause();
+        isAudioPlaying = false;
+        document.getElementById('audio-icon').className = 'fas fa-volume-mute text-pink-400';
+        document.getElementById('audio-text').innerText = 'Play Music';
+      } else {
+        playAudio();
+      }
+    }
+
+    // Confetti Effect
+    function triggerConfettiShower() {
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } }));
+      }, 250);
+    }
+  </script>
+</body>
+</html>
