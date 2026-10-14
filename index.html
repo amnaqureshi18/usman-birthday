@@ -79,11 +79,10 @@
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
 
-  <!-- Background Music with exact matching filenames -->
+  <!-- Background Music with Exact Filename Matching -->
   <audio id="bg-music" loop preload="auto">
-    <source src="audio/MERA BHAI TU MERI JAAN HAI Raksha Bandhan Song.mp3" type="audio/mpeg">
-    <source src="audio/MERA%20BHAI%20TU%20MERI%20JAAN%20HAI%20Raksha%20Bandhan%20Song.mp3" type="audio/mpeg">
-    <source src="audio/song.mp3" type="audio/mpeg">
+    <source src="audio/MERA BHAI TU MERI JAAN HAI Raksha Bandhan Song, Rakhi Song Sohail Shaikh,Naved Shaikh,Ali-Faishal.mp3.mpeg" type="audio/mpeg">
+    <source src="audio/MERA%20BHAI%20TU%20MERI%20JAAN%20HAI%20Raksha%20Bandhan%20Song,%20Rakhi%20Song%20Sohail%20Shaikh,Naved%20Shaikh,Ali-Faishal.mp3.mpeg" type="audio/mpeg">
   </audio>
 
   <!-- Sound Toggle Button -->
@@ -307,7 +306,7 @@
     let isAudioPlaying = false;
     let currentPhotoIndex = 0;
 
-    // Exact photos matching your GitHub images folder
+    // Exact uploaded photos binding
     const photos = [
       { src: 'images/1ee9bc61-dfdc-48ad-a798-24f0b5df39e7.jpg', caption: 'Best Memories with Bro! 📸' },
       { src: 'images/3252430c-14b4-42dc-aaf5-71969cc5db63.jpg', caption: 'Always Cool & Awesome 😎' },
@@ -393,7 +392,7 @@
         isAudioPlaying = true;
         document.getElementById('audio-icon').className = 'fas fa-volume-up text-emerald-400';
         document.getElementById('audio-text').innerText = 'Music Playing';
-      }).catch(err => console.log('Audio autoplay blocked'));
+      }).catch(err => console.log('Audio autoplay blocked by browser policy'));
     }
 
     function toggleAudio() {
