@@ -79,11 +79,11 @@
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
 
-  <!-- Background Music -->
+  <!-- Background Music with exact matching filenames -->
   <audio id="bg-music" loop preload="auto">
+    <source src="audio/MERA BHAI TU MERI JAAN HAI Raksha Bandhan Song.mp3" type="audio/mpeg">
+    <source src="audio/MERA%20BHAI%20TU%20MERI%20JAAN%20HAI%20Raksha%20Bandhan%20Song.mp3" type="audio/mpeg">
     <source src="audio/song.mp3" type="audio/mpeg">
-    <source src="audio/music.mp3" type="audio/mpeg">
-    <source src="audio/audio.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Sound Toggle Button -->
@@ -222,7 +222,7 @@
 
   <!-- Modal 1: Birthday Wish -->
   <div id="modal-1" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
-    <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-pink-500/30 relative animate-scale-up">
+    <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-pink-500/30 relative">
       <div class="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-400 text-3xl">
         💌
       </div>
@@ -238,14 +238,14 @@
   <div id="modal-2" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-md w-full rounded-3xl p-6 text-center border border-purple-500/30 relative">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-xl font-bold font-fun text-white"><i class="fas fa-camera text-purple-400 mr-2"></i> Usam Bro's Memory Gallery</h3>
+        <h3 class="text-xl font-bold font-fun text-white"><i class="fas fa-camera text-purple-400 mr-2"></i> Usman Bro's Memory Gallery</h3>
         <button onclick="closeModal(2)" class="text-slate-400 hover:text-white text-lg"><i class="fas fa-times"></i></button>
       </div>
       
       <!-- Polaroid Display Frame -->
       <div class="polaroid mx-auto my-2 max-w-xs">
         <div class="w-full h-56 bg-slate-200 rounded overflow-hidden relative">
-          <img id="gallery-img" src="images/pic1.jpg" onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600'" alt="Bro Photo" class="w-full h-full object-cover">
+          <img id="gallery-img" src="images/1ee9bc61-dfdc-48ad-a798-24f0b5df39e7.jpg" alt="Bro Photo" class="w-full h-full object-cover">
         </div>
         <p id="gallery-caption" class="font-hand text-2xl text-slate-800 mt-3 font-bold">Best Memories with Bro! 📸</p>
       </div>
@@ -307,11 +307,11 @@
     let isAudioPlaying = false;
     let currentPhotoIndex = 0;
 
-    // Photos uploaded in images folder with fallback support
+    // Exact photos matching your GitHub images folder
     const photos = [
-      { src: 'images/pic1.jpg', caption: 'Best Memories with Bro! 📸' },
-      { src: 'images/pic2.jpg', caption: 'Always Cool & Awesome 😎' },
-      { src: 'images/pic3.jpg', caption: 'World\'s Best Brother ❤️' }
+      { src: 'images/1ee9bc61-dfdc-48ad-a798-24f0b5df39e7.jpg', caption: 'Best Memories with Bro! 📸' },
+      { src: 'images/3252430c-14b4-42dc-aaf5-71969cc5db63.jpg', caption: 'Always Cool & Awesome 😎' },
+      { src: 'images/7016e4d1-1764-41cf-90a8-9f73b53c3800.jpg', caption: 'World\'s Best Brother ❤️' }
     ];
 
     // Password Check
@@ -341,7 +341,6 @@
 
       poppedBalloons.add(num);
       
-      // Confetti burst on pop
       confetti({
         particleCount: 40,
         spread: 60,
